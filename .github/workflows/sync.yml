@@ -19,7 +19,7 @@ jobs:
 
       - name: Download latest geoip.dat from hydraponique
         run: |
-          curl -fsSL "https://github.com/hydraponique/roscomvpn-geoip/raw/release/release/geoip.dat" \
+          curl -fsSL "https://github.com/hydraponique/roscomvpn-geoip/raw/release/geoip.dat" \
             -o geoip.dat
           test -s geoip.dat
           echo "geoip.dat size: $(du -h geoip.dat | cut -f1)"
@@ -57,4 +57,3 @@ jobs:
       - name: Purge jsDelivr CDN
         run: |
           curl -s "https://purge.jsdelivr.net/gh/${{ github.repository }}@release/release/geoip.dat" || true
-          curl -s "https://purge.jsdelivr.net/gh/${{ github.repository }}@${{ env.DAILY_TAG }}/release/geoip.dat" || true
